@@ -3,7 +3,7 @@ const db = require('../models/user.model');
 module.exports = {
    findAll: function(req, res) {
       db.User.find(req.query)
-         .then(dbUser => res.json(dbUser))
+         .then(dbUsers => res.json(dbUsers))
          .catch(err => res.status(422).json('Error: ' + err));
    },
    findById: function(req, res) {
@@ -16,7 +16,7 @@ module.exports = {
       const username = req.body.username;
       const newUser = new User({username})
       newUser.save() // instance of new user is saved to the MongoDB Atlas database
-      .then(dbUser => res.json(dbUser + ': User added!'))
+      .then(dbUser => res.json(dbUser + ': User Added!'))
       .catch(err => res.status(422).json('Error: ' + err));
 
 
