@@ -1,7 +1,7 @@
 const express = require('express');
 
 const mongoose = require('mongoose');
-// const routes = require("./routes");
+const routes = require("./routes");
 const cors = require('cors');
 
 require('dotenv').config();
@@ -19,7 +19,7 @@ if (process.env.NODE_ENV === "production") {
 }
 
 // Add routes, both API and view
-// app.use(routes);
+app.use(routes);
 
 // Connect to the Mongo DB
 const uri = process.env.ATLAS_URI;
