@@ -1,17 +1,19 @@
 const express = require('express');
-const mongoose = require('mongoose');
-const cors = require('cors');
-require('dotenv').config();
 
+const mongoose = require('mongoose');
 const routes = require("./routes");
+
+require('dotenv').config();
 
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-app.use(cors());
+// MIDDLEWARE
 // Configure body parsing for AJAX requests
 app.use(express.urlencoded({ extended: true }));
-app.use(express.json()); //allows me to parse JSON becasue server will send and receive JSON
+//Parse JSON becasue server will send and receive JSON
+app.use(express.json()); 
+
 // Serve up static assets
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
@@ -30,8 +32,9 @@ mongoose.connect(
     useNewUrlParser: true
   }
   );
+  
 mongoose.connection.once('open', () => {
-    console.log("MongoDB database connection has been established successfully.");
+    console.log("🌎  ==> MongoDB database connection has been established successfully.");
   })
 
 // Start the API server
