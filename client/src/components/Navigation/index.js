@@ -4,8 +4,9 @@ import "./style.css";
 
 class Nav extends Component {
    state = {
-      open: false
-   }
+      open: false,
+      width: window.innerWidth
+   };
 
    render() {
       return (
@@ -24,10 +25,32 @@ class Nav extends Component {
             >
                <span className="navbar-toggler-icon" />
             </button>
+            <div className={`${this.state.open ? "" : "collapse "}navbar-collapse`} id="navbarNav">
+               <ul className='navbar-nav'>
+                  <li className='nav-item'>
+                     <NavLink
+                        onClick={this.toggleNav}
+                        className={window.location.pathname === "/" ? "nav-link active" : "nav-link"}
+                        to="/"
+                        >
+                        Search
+                     </NavLink>
+                  </li>
+                  <li className="nav-item">
+                     <NavLink
+                        onClick={this.toggleNav}
+                        className={window.location.pathname === "/saved" ? "nav-link active" : "nav-link"}
+                        to="/saved"
+                     >
+                        Saved
+                     </NavLink>
+                  </li>
+               </ul>
+            </div>
          </nav>
-      )
+      );
    }
 }
 
 
-
+export default Nav;
