@@ -10,7 +10,7 @@ class Nav extends Component {
 
    render() {
       return (
-         <nav className='navbar navbar-expand-lg navbar-light bg-light mb-2'>
+         <nav className='navbar navbar-light bg-light mb-2'>
             <NavLink className='navbar-brand' to='/'>
                Google Books
             </NavLink>
